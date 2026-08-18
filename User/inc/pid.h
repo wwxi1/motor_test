@@ -10,10 +10,9 @@ typedef struct {
     float SetVal;       
     float CurVal;       
     float KP, KI, KD;    //系数
-    float Err[3];       
-    float SumError;    
-    float Out;        
-    PIDMode_t Mode;    
+    float Err[3];         
+    float output;        
+    PIDMode_t mode;    
 } PIDType;
 
 typedef struct {
