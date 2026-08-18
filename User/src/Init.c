@@ -4,7 +4,7 @@
  
 
 
-
+DJMotor DJmotor[USE_DJNUM];
 
 
 void DJmotor_Init(void)                     // 参数初始化

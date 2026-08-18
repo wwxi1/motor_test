@@ -7,9 +7,9 @@ float PID_Caculate(PIDType *pid)
     switch (pid->mode)
     {
     case PIDINC:
-        pid->output = pid->KP * (pid->err[] - pid->err[1]) +
+        pid->output = pid->KP * (pid->err[0] - pid->err[1]) +
                       pid->KI * pid->err[0] +
-                      pid->KD * (pid->err[] - 2.0f * pid->err[1] + pid->err[2]);
+                      pid->KD * (pid->err[0] - 2.0f * pid->err[1] + pid->err[2]);
         pid->err[2] = pid->err[1];
         pid->err[1] = pid->err[0];
         break;
@@ -23,7 +23,7 @@ float PID_Caculate(PIDType *pid)
         pid->output = pid->KP * pid->err[0] +
                       pid->KI * pid->err[2] +
                       pid->KD * (pid->err[0] - pid->err[1]);
-        pid->err[1] = pid->err[o];
+        pid->err[1] = pid->err[0];
         break;
 
     default:

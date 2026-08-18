@@ -3,14 +3,14 @@
 
 #include "Init.h"
 
+float PID_Caculate(PIDType *pid);
+
 
 typedef struct {
     float SetVal;       
     float CurVal;       
-    float Kp, Ki, Kd;    //系数
-    float Error;        
-    float LastError;    //上次误差 e(k-1) 
-    float PrevError;    // 上上次误差 e(k-2)
+    float KP, KI, KD;    //系数
+    float Err[3];       
     float SumError;    
     float Out;        
     PIDMode_t Mode;    
