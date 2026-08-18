@@ -9,7 +9,7 @@ void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
         return;
     }
 
-    uint8_t card_id = (uint8_t)(Rxheader.Identifier - 0x200U); /* 1 .. 8 */
+    uint8_t card_id = (uint8_t)(Rxheader.StdId - 0x200U); /* 1 .. 8 */
 
     if (card_id > USE_DJNUM)
     {

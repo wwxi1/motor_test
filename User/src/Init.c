@@ -1,6 +1,12 @@
 
 #include "Init.h"
 
+ 
+
+
+
+
+
 void DJmotor_Init(void)                     // 参数初始化
 {
     DJmotorParam dj2006_param;

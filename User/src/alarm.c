@@ -1,9 +1,9 @@
 #include "alarm.h"
 
-static void DJmotor_Monitor(DJMotorPointer motor)
+void DJmotor_Monitor(DJMotorPointer motor)
 {
 
-    if (motor->valNow.PulseGap < 5 &&motor->valNow.current_raw > 3000)
+    if (ABS(motor->valNow.PulseGap) < 5 &&motor->valNow.current_raw > 3000)
     {
         if (motor->error.stuckCount++ > 500U)
         {

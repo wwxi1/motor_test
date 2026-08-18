@@ -92,6 +92,8 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+ DJmotor_Init();   
+ 
   /* USER CODE END 2 */
 
   /* Infinite loop */

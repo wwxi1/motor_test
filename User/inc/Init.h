@@ -1,18 +1,36 @@
 #ifndef INIT
 #define INIT
 
+#include "main.h"
+#include "pid.h"
+#include <stdbool.h> 
 
+
+#define USE_DJ 1
+#define USE_DJNUM 1
+#define M2006_NUM 1
+#define M3508_NUM 0
+#define M2006_RATIO (36.0f / 19.0f) 
+#define M3508_RATIO  (3591.0f / 187.0f)
+#define Zero_Distance  5 
+#define PIDPOS 0
+#define PIDINC 1
+
+#define ABS(x) ((x) > 0 ? (x) : -(x))
+#define CLAMP(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
 
 void DJmotor_Init(void);
 
+
 typedef enum
 {
-    DJ_Disable = 0,  /*关: transmit 0 current */
-    DJ_RPM = 1,      /*速度 mode */
-    DJ_Position = 2, /*位置 mode */
-    DJ_Zero = 3,     /*mode */
-    DJ_Current = 4,  /*电流/扭矩 */
+    DJ_Disable = 0,  //关
+    DJ_RPM = 1,      //速度模式
+    DJ_Position = 2, //位置模式
+    DJ_Zero = 3,     //寻零模式
+    DJ_Current = 4,  //电流/扭矩模式
 } DJmotor_mode_t;
+
 
 typedef struct
 {
@@ -50,6 +68,28 @@ typedef struct
     bool IsLooseStuck;
 } DJmotorLimit;
 
+
+//电机状态
+typedef struct {
+    volatile bool IsSetZero;    
+    volatile bool ZeroFlag;      
+    volatile bool StuckFlag;    
+    volatile bool Overtimeflag;
+} DJmotorStatus;
+
+// 寻零计数器 
+typedef struct {
+    int32_t pulseLock;  
+    uint32_t zeroCnt;    
+    uint32_t GapCnt;     
+} DJmotorArgum;
+
+//故障检测计数器 
+typedef struct {
+    volatile uint32_t lastRxTime;  
+    volatile uint32_t stuckCount;    
+    volatile uint32_t timeoutCount;
+} DJmotorError;
 typedef struct
 {
     uint8_t ID;
@@ -79,4 +119,5 @@ void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
 void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload);
 
  
+#endif
 #endif

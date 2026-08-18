@@ -6,6 +6,6 @@
 #include "Init.h"
 
 void DJmotor_Func(void);
-static void DJmotor_SwitchMode(DJMotorPointer motor)
+static void DJmotor_SwitchMode(DJMotorPointer motor);
 
 #endif

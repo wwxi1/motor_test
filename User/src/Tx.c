@@ -19,7 +19,7 @@ void DJmotor_CurrentTransmit(DJMotorPointer motor)
     }
     else
     {
-        tx_header.Identifier = 0x1FFU;
+        tx_header.StdId = 0x1FFU;
         tag = (uint8_t)((motor->ID - 5U) * 2U);
     }
     EncodeS16Data(&motor->valSet.current_raw, &tx_data[tag]);
@@ -27,6 +27,6 @@ void DJmotor_CurrentTransmit(DJMotorPointer motor)
 
     if (motor->ID == 4U || motor->ID == 8U)
     {
-        HAL_CAN_AddMessage (DJmotor_GetCanHandle(), &tx_header, tx_data);
+        HAL_CAN_AddTxMessage (DJmotor_GetCanHandle(),  &tx_header, tx_data, &tx_mailbox);
     }
 }
