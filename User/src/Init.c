@@ -77,9 +77,9 @@ void DJmotor_Init(void)                     // 参数初始化
         DJmotor[i + M2006_NUM].param = dj3508_param;
     }
 
-    for (uint32_t i = 0; i < USE_DJNUM; i +)
+    for (uint32_t i = 0; i < USE_DJNUM; i++)
     {
-        PID_Init(SDJmotor[i].posPID, 0.07f, 0.0005f, 0.0f, PIDPOS);
-        PID_Init(SDJmotor[i].velPID, 5.5f, 0.3f, 0.01f, PIDINC);
+        PID_Init(&DJmotor[i].posPID, 0.07f, 0.0005f, 0.0f, PIDPOS);
+        PID_Init(&DJmotor[i].velPID, 5.5f, 0.3f, 0.01f, PIDINC);
     }
 }

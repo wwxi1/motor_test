@@ -3,10 +3,7 @@
 
 
 
-
-
 void DJmotor_Init(void);
-
 
 
 

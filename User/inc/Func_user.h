@@ -5,7 +5,7 @@
  
 #include "Init.h"
 
-
+void DJmotor_Func(void);
 
 
 

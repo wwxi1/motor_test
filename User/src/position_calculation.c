@@ -18,7 +18,7 @@ void DJmotor_AngleCalculate(DJMotorPointer motor)
                               ((float)motor->param.PulsePerRound * motor->param.Gear_ratio *
                                motor->param.Reduction_ratio);
 
-    if (motor→Begin)      // 废弃字段
+    if (motor->Begin)      // 废弃字段
     {
         motor->argum.pulseLock = motor->valNow.PulseTotal;
     }
