@@ -4,7 +4,7 @@
 
 #include "Init.h"
 
-DJmotor_CurrentTransmit(DJMotorPointer motor);
+void DJmotor_CurrentTransmit(DJMotorPointer motor);
 
 
 #endif

@@ -27,48 +27,244 @@ Project File Date:  08/18/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'D:\keil5\ARM\ARMCLANG\Bin'
 Build target 'motor_test'
-../User/src/position_calculation.c(2): warning: In file included from...
-../User/inc\position_calculation.h(4): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
+../User/src/pid.c(1): warning: In file included from...
+../User/inc\pid.h(4): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
     uint8_t ID;
     ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
+../User/inc/Init.h(13): error: unknown type name 'bool'
     volatile bool Begin;              // true 运行 MODE;false 失能
              ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
              ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
              ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
     DJmotorParam param;
     ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
     DJmotorVal valSet;
     ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
     DJmotorVal valNow;
     ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
     DJmotorVal valPre;
     ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
     DJmotorStatus statusFlag;
     ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
     DJmotorLimit limit;
     ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
     DJmotorArgum argum;
     ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
     DJmotorError error;
     ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
     PIDType posPID;
     ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
+    PIDType velPID;
+    ^
+../User/inc/Init.h(1): error: unterminated conditional directive
+#ifndef INIT
+ ^
+../User/src/pid.c(1): warning: In file included from...
+../User/inc\pid.h(8): error: unknown type name 'PIDType'
+float PID_Caculate(PIDType *pid);
+                   ^
+../User/src/pid.c(3): error: unknown type name 'PIDType'
+float PID_Caculate(PIDType *pid)
+                   ^
+../User/src/pid.c(9): error: use of undeclared identifier 'PIDINC'
+    case PIDINC:
+         ^
+../User/src/pid.c(10): error: expected expression
+        pid->output = pid->KP * (pid->err[] - pid->err[1]) +
+                                          ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling pid.c...
+../User/src/motor_mode.c(3): warning: In file included from...
+../User/inc\motor_mode.h(6): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
+    uint8_t ID;
+    ^
+../User/inc/Init.h(13): error: unknown type name 'bool'
+    volatile bool Begin;              // true 运行 MODE;false 失能
+             ^
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
+             ^
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
+             ^
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
+    DJmotorParam param;
+    ^
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
+    DJmotorVal valSet;
+    ^
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
+    DJmotorVal valNow;
+    ^
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
+    DJmotorVal valPre;
+    ^
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
+    DJmotorStatus statusFlag;
+    ^
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
+    DJmotorLimit limit;
+    ^
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
+    DJmotorArgum argum;
+    ^
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
+    DJmotorError error;
+    ^
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
+    PIDType posPID;
+    ^
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
+    PIDType velPID;
+    ^
+../User/inc/Init.h(1): error: unterminated conditional directive
+#ifndef INIT
+ ^
+../User/src/motor_mode.c(13): warning: implicit declaration of function 'ClampPeak' is invalid in C99 [-Wimplicit-function-declaration]
+        motor->velPID.SetVal = ClampPeak(motor->velPID.SetVal, motor->limit.SpeedRPMLimit);
+                               ^
+../User/src/motor_mode.c(15): warning: implicit declaration of function 'PID_Caculate' is invalid in C99 [-Wimplicit-function-declaration]
+    motor->valSet.current_raw += PID_Caculate(&motor->velPID);
+                                 ^
+../User/src/motor_mode.c(16): error: use of undeclared identifier 'int16_t'
+    motor->valSet.current_raw = (int16_t)ClampPeak(motor->valSet.current_raw, motor->param.CurrentLimit_raw);
+                                 ^
+../User/src/motor_mode.c(23): error: use of undeclared identifier 'int32_t'
+    motor->valSet.PulseTotal = (int32_t)(motor->valSet.angle_deg * motor->param.Gear_ratio *
+                                ^
+../User/src/motor_mode.c(28): error: unknown type name 'int32_t'
+        const int32_t max_pulse = (int32_t)(motor->limit.MaxAngle_deg *
+              ^
+../User/src/motor_mode.c(28): error: use of undeclared identifier 'int32_t'
+        const int32_t max_pulse = (int32_t)(motor->limit.MaxAngle_deg *
+                                   ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+2 warnings and 20 errors generated.
+compiling motor_mode.c...
+../User/src/alarm.c(1): warning: In file included from...
+../User/inc\alarm.h(5): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
+    uint8_t ID;
+    ^
+../User/inc/Init.h(13): error: unknown type name 'bool'
+    volatile bool Begin;              // true 运行 MODE;false 失能
+             ^
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
+             ^
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
+             ^
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
+    DJmotorParam param;
+    ^
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
+    DJmotorVal valSet;
+    ^
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
+    DJmotorVal valNow;
+    ^
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
+    DJmotorVal valPre;
+    ^
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
+    DJmotorStatus statusFlag;
+    ^
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
+    DJmotorLimit limit;
+    ^
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
+    DJmotorArgum argum;
+    ^
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
+    DJmotorError error;
+    ^
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
+    PIDType posPID;
+    ^
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
+    PIDType velPID;
+    ^
+../User/inc/Init.h(1): error: unterminated conditional directive
+#ifndef INIT
+ ^
+../User/src/alarm.c(3): error: static declaration of 'DJmotor_Monitor' follows non-static declaration
+static void DJmotor_Monitor(DJMotorPointer motor)
+            ^
+../User/inc\alarm.h(7): note: previous declaration is here
+void DJmotor_Monitor(DJMotorPointer motor);
+     ^
+../User/src/alarm.c(6): error: expected expression
+    if (motor->valNow.PulseGap < 5 &&.motor->valNow.current_raw > 3000)
+                                     ^
+../User/src/alarm.c(11): error: use of undeclared identifier 'true'
+            motor->statusFlag.StuckFlag = true;
+                                          ^
+../User/src/alarm.c(14): error: use of undeclared identifier 'DJ_Disable'
+                motor->MODE_Set = DJ_Disable;
+                                  ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+compiling alarm.c...
+../User/src/position_calculation.c(2): warning: In file included from...
+../User/inc\position_calculation.h(4): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
+    uint8_t ID;
+    ^
+../User/inc/Init.h(13): error: unknown type name 'bool'
+    volatile bool Begin;              // true 运行 MODE;false 失能
+             ^
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
+             ^
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
+    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
+             ^
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
+    DJmotorParam param;
+    ^
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
+    DJmotorVal valSet;
+    ^
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
+    DJmotorVal valNow;
+    ^
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
+    DJmotorVal valPre;
+    ^
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
+    DJmotorStatus statusFlag;
+    ^
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
+    DJmotorLimit limit;
+    ^
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
+    DJmotorArgum argum;
+    ^
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
+    DJmotorError error;
+    ^
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
+    PIDType posPID;
+    ^
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
     PIDType velPID;
     ^
 ../User/inc/Init.h(1): error: unterminated conditional directive
@@ -89,54 +285,58 @@ Build target 'motor_test'
 ../User/src/position_calculation.c(13): error: use of undeclared identifier 'int32_t'
             (int32_t)motor->param.PulsePerRound));
              ^
-../User/src/position_calculation.c(21): error: character <U+2192> not allowed in an identifier
-    if (motor→Begin)      // 废弃字段
-             ^
+../User/src/position_calculation.c(28): warning: implicit declaration of function 'DJmotor_SetZero' is invalid in C99 [-Wimplicit-function-declaration]
+        DJmotor_SetZero(motor);
+        ^
+../User/src/position_calculation.c(29): error: use of undeclared identifier 'false'; did you mean 'else'?
+        motor->statusFlag.IsSetZero = false;
+                                      ^~~~~
+                                      else
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
-2 warnings and 20 errors generated.
+3 warnings and 20 errors generated.
 compiling position_calculation.c...
 ../User/src/Func_user.c(1): warning: In file included from...
 ../User/inc\Func_user.h(6): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
     uint8_t ID;
     ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
+../User/inc/Init.h(13): error: unknown type name 'bool'
     volatile bool Begin;              // true 运行 MODE;false 失能
              ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
              ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
              ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
     DJmotorParam param;
     ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
     DJmotorVal valSet;
     ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
     DJmotorVal valNow;
     ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
     DJmotorVal valPre;
     ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
     DJmotorStatus statusFlag;
     ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
     DJmotorLimit limit;
     ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
     DJmotorArgum argum;
     ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
     DJmotorError error;
     ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
     PIDType posPID;
     ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
     PIDType velPID;
     ^
 ../User/inc/Init.h(1): error: unterminated conditional directive
@@ -157,109 +357,110 @@ compiling position_calculation.c...
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
 compiling Func_user.c...
-../User/src/Tx.c(1): warning: In file included from...
-../User/inc\Tx.h(5): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
+../User/src/Rx.c(1): warning: In file included from...
+../User/inc\Rx.h(4): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
     uint8_t ID;
     ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
+../User/inc/Init.h(13): error: unknown type name 'bool'
     volatile bool Begin;              // true 运行 MODE;false 失能
              ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
              ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
              ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
     DJmotorParam param;
     ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
     DJmotorVal valSet;
     ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
     DJmotorVal valNow;
     ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
     DJmotorVal valPre;
     ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
     DJmotorStatus statusFlag;
     ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
     DJmotorLimit limit;
     ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
     DJmotorArgum argum;
     ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
     DJmotorError error;
     ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
     PIDType posPID;
     ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
     PIDType velPID;
     ^
 ../User/inc/Init.h(1): error: unterminated conditional directive
 #ifndef INIT
  ^
-../User/src/Tx.c(5): error: unknown type name 'uint8_t'
-    static uint8_t tx_data[8] = {0};
-           ^
-../User/src/Tx.c(6): error: use of undeclared identifier 'FDCAN_TxHeaderTypeDef'
-    FDCAN_TxHeaderTypeDef tx_header = {0};
-    ^
-../User/src/Tx.c(7): error: use of undeclared identifier 'uint8_t'
-    uint8_t tag = 0;
-    ^
-../User/src/Tx.c(10): error: use of undeclared identifier 'tx_header'
-    tx_header.IdType = FDCAN_STANDARD_ID;
-    ^
+../User/src/Rx.c(1): warning: In file included from...
+../User/inc\Rx.h(7): error: unknown type name 'FDCAN_RxHeaderTypeDef'
+void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
+                     ^
+../User/inc\Rx.h(7): error: unknown type name 'uint8_t'
+void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
+                                                     ^
+../User/src/Rx.c(3): error: unknown type name 'CAN_RxHeaderTypeDef'
+void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
+                     ^
+../User/src/Rx.c(3): error: unknown type name 'uint8_t'
+void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
+                                                   ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
-compiling Tx.c...
+compiling Rx.c...
 ../User/src/Init.c(2): warning: In file included from...
-../User/inc\Init.h(15): error: unknown type name 'uint8_t'
+../User/inc\Init.h(12): error: unknown type name 'uint8_t'
     uint8_t ID;
     ^
-../User/inc\Init.h(16): error: unknown type name 'bool'
+../User/inc\Init.h(13): error: unknown type name 'bool'
     volatile bool Begin;              // true 运行 MODE;false 失能
              ^
-../User/inc\Init.h(17): error: unknown type name 'DJmotor_mode_t'
+../User/inc\Init.h(14): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
              ^
-../User/inc\Init.h(18): error: unknown type name 'DJmotor_mode_t'
+../User/inc\Init.h(15): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
              ^
-../User/inc\Init.h(20): error: unknown type name 'DJmotorParam'
+../User/inc\Init.h(17): error: unknown type name 'DJmotorParam'
     DJmotorParam param;
     ^
-../User/inc\Init.h(21): error: unknown type name 'DJmotorVal'
+../User/inc\Init.h(18): error: unknown type name 'DJmotorVal'
     DJmotorVal valSet;
     ^
-../User/inc\Init.h(22): error: unknown type name 'DJmotorVal'
+../User/inc\Init.h(19): error: unknown type name 'DJmotorVal'
     DJmotorVal valNow;
     ^
-../User/inc\Init.h(23): error: unknown type name 'DJmotorVal'
+../User/inc\Init.h(20): error: unknown type name 'DJmotorVal'
     DJmotorVal valPre;
     ^
-../User/inc\Init.h(24): error: unknown type name 'DJmotorStatus'
+../User/inc\Init.h(21): error: unknown type name 'DJmotorStatus'
     DJmotorStatus statusFlag;
     ^
-../User/inc\Init.h(25): error: unknown type name 'DJmotorLimit'
+../User/inc\Init.h(22): error: unknown type name 'DJmotorLimit'
     DJmotorLimit limit;
     ^
-../User/inc\Init.h(26): error: unknown type name 'DJmotorArgum'
+../User/inc\Init.h(23): error: unknown type name 'DJmotorArgum'
     DJmotorArgum argum;
     ^
-../User/inc\Init.h(27): error: unknown type name 'DJmotorError'
+../User/inc\Init.h(24): error: unknown type name 'DJmotorError'
     DJmotorError error;
     ^
-../User/inc\Init.h(28): error: unknown type name 'PIDType'
+../User/inc\Init.h(25): error: unknown type name 'PIDType'
     PIDType posPID;
     ^
-../User/inc\Init.h(29): error: unknown type name 'PIDType'
+../User/inc\Init.h(26): error: unknown type name 'PIDType'
     PIDType velPID;
     ^
 ../User/inc\Init.h(1): error: unterminated conditional directive
@@ -285,266 +486,76 @@ void DJmotor_Init(void)                     // 参数初始化
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
 20 errors generated.
 compiling Init.c...
-../User/src/alarm.c(1): warning: In file included from...
-../User/inc\alarm.h(5): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
+../User/src/Tx.c(1): warning: In file included from...
+../User/inc\Tx.h(5): warning: In file included from...
+../User/inc/Init.h(12): error: unknown type name 'uint8_t'
     uint8_t ID;
     ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
+../User/inc/Init.h(13): error: unknown type name 'bool'
     volatile bool Begin;              // true 运行 MODE;false 失能
              ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(14): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
              ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
+../User/inc/Init.h(15): error: unknown type name 'DJmotor_mode_t'
     volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
              ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
+../User/inc/Init.h(17): error: unknown type name 'DJmotorParam'
     DJmotorParam param;
     ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(18): error: unknown type name 'DJmotorVal'
     DJmotorVal valSet;
     ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(19): error: unknown type name 'DJmotorVal'
     DJmotorVal valNow;
     ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
+../User/inc/Init.h(20): error: unknown type name 'DJmotorVal'
     DJmotorVal valPre;
     ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
+../User/inc/Init.h(21): error: unknown type name 'DJmotorStatus'
     DJmotorStatus statusFlag;
     ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
+../User/inc/Init.h(22): error: unknown type name 'DJmotorLimit'
     DJmotorLimit limit;
     ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
+../User/inc/Init.h(23): error: unknown type name 'DJmotorArgum'
     DJmotorArgum argum;
     ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
+../User/inc/Init.h(24): error: unknown type name 'DJmotorError'
     DJmotorError error;
     ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
+../User/inc/Init.h(25): error: unknown type name 'PIDType'
     PIDType posPID;
     ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
+../User/inc/Init.h(26): error: unknown type name 'PIDType'
     PIDType velPID;
     ^
 ../User/inc/Init.h(1): error: unterminated conditional directive
 #ifndef INIT
  ^
-../User/src/alarm.c(6): error: expected ')'
-    if (motor->valNow.PulseGap < 5 SS.motor->valNow.current_raw > 3000)
-                                   ^
-../User/src/alarm.c(6): note: to match this '('
-    if (motor->valNow.PulseGap < 5 SS.motor->valNow.current_raw > 3000)
-       ^
-../User/src/alarm.c(11): error: use of undeclared identifier 'true'
-            motor->statusFlag.StuckFlag = true;
-                                          ^
-../User/src/alarm.c(14): error: use of undeclared identifier 'DJ_Disable'
-                motor->MODE_Set = DJ_Disable;
-                                  ^
-../User/src/alarm.c(29): error: use of undeclared identifier 'DJ_Disable'
-            motor->MODE_Set = DJ_Disable;
-                              ^
+../User/src/Tx.c(1): warning: In file included from...
+../User/inc\Tx.h(7): warning: type specifier missing, defaults to 'int' [-Wimplicit-int]
+DJmotor_CurrentTransmit(DJMotorPointer motor);
+^
+../User/src/Tx.c(3): error: conflicting types for 'DJmotor_CurrentTransmit'
+void DJmotor_CurrentTransmit(DJMotorPointer motor)
+     ^
+../User/inc\Tx.h(7): note: previous declaration is here
+DJmotor_CurrentTransmit(DJMotorPointer motor);
+^
+../User/src/Tx.c(5): error: unknown type name 'uint8_t'
+    static uint8_t tx_data[8] = {0};
+           ^
+../User/src/Tx.c(6): error: use of undeclared identifier 'CAN_TxHeaderTypeDef'
+    CAN_TxHeaderTypeDef tx_header = {0};
+    ^
+../User/src/Tx.c(7): error: use of undeclared identifier 'uint8_t'
+    uint8_t tag = 0;
+    ^
 fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-compiling alarm.c...
-../User/src/pid.c(1): warning: In file included from...
-../User/inc\pid.h(4): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
-    uint8_t ID;
-    ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
-    volatile bool Begin;              // true 运行 MODE;false 失能
-             ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
-             ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
-             ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
-    DJmotorParam param;
-    ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
-    DJmotorVal valSet;
-    ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
-    DJmotorVal valNow;
-    ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
-    DJmotorVal valPre;
-    ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
-    DJmotorStatus statusFlag;
-    ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
-    DJmotorLimit limit;
-    ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
-    DJmotorArgum argum;
-    ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
-    DJmotorError error;
-    ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
-    PIDType posPID;
-    ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
-    PIDType velPID;
-    ^
-../User/inc/Init.h(1): error: unterminated conditional directive
-#ifndef INIT
- ^
-../User/src/pid.c(1): warning: In file included from...
-../User/inc\pid.h(8): error: unknown type name 'PIDType'
-float PID_Caculate(PIDType *pid);
-                   ^
-../User/src/pid.c(3): error: unknown type name 'PIDType'
-float PID_Caculate(PIDType *pid)
-                   ^
-../User/src/pid.c(9): error: use of undeclared identifier 'PIDINC'
-    case PIDINC:
-         ^
-../User/src/pid.c(10): error: expected expression
-        pid->output = pid->KP * (pid->err[] - pid->err[1]) +
-                                          ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-compiling pid.c...
-../User/src/motor_mode.c(1): warning: In file included from...
-../User/inc\motor_mode.h(6): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
-    uint8_t ID;
-    ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
-    volatile bool Begin;              // true 运行 MODE;false 失能
-             ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
-             ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
-             ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
-    DJmotorParam param;
-    ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
-    DJmotorVal valSet;
-    ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
-    DJmotorVal valNow;
-    ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
-    DJmotorVal valPre;
-    ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
-    DJmotorStatus statusFlag;
-    ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
-    DJmotorLimit limit;
-    ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
-    DJmotorArgum argum;
-    ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
-    DJmotorError error;
-    ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
-    PIDType posPID;
-    ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
-    PIDType velPID;
-    ^
-../User/inc/Init.h(1): error: unterminated conditional directive
-#ifndef INIT
- ^
-../User/src/motor_mode.c(13): warning: implicit declaration of function 'ClampPeak' is invalid in C99 [-Wimplicit-function-declaration]
-        motor->velPID.SetVal = ClampPeak(motor->velPID.SetVal, motor->limit.SpeedRPMLimit);
-                               ^
-../User/src/motor_mode.c(15): warning: implicit declaration of function 'PID_Caculate' is invalid in C99 [-Wimplicit-function-declaration]
-    motor->valSet.current_raw += PID_Caculate(Smotor->velPID);
-                                 ^
-../User/src/motor_mode.c(15): error: use of undeclared identifier 'Smotor'
-    motor->valSet.current_raw += PID_Caculate(Smotor->velPID);
-                                              ^
-../User/src/motor_mode.c(16): error: use of undeclared identifier 'int16_t'
-    motor->valSet.current_raw = (int16_t)ClampPeak(motor->valSet.current_raw, motor->param.CurrentLimit_raw);
-                                 ^
-../User/src/motor_mode.c(24): error: use of undeclared identifier 'int32_t'
-    motor->valSet.PulseTotal = (int32_t)(motor->valSet.angle_deg * motor->param.Gear_ratio *
-                                ^
-../User/src/motor_mode.c(29): error: unknown type name 'int32_t'
-        const int32_t max_pulse = (int32_t)(motor->limit.MaxAngle_deg *
-              ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-2 warnings and 20 errors generated.
-compiling motor_mode.c...
-../User/src/Rx.c(1): warning: In file included from...
-../User/inc\Rx.h(4): warning: In file included from...
-../User/inc/Init.h(15): error: unknown type name 'uint8_t'
-    uint8_t ID;
-    ^
-../User/inc/Init.h(16): error: unknown type name 'bool'
-    volatile bool Begin;              // true 运行 MODE;false 失能
-             ^
-../User/inc/Init.h(17): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
-             ^
-../User/inc/Init.h(18): error: unknown type name 'DJmotor_mode_t'
-    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
-             ^
-../User/inc/Init.h(20): error: unknown type name 'DJmotorParam'
-    DJmotorParam param;
-    ^
-../User/inc/Init.h(21): error: unknown type name 'DJmotorVal'
-    DJmotorVal valSet;
-    ^
-../User/inc/Init.h(22): error: unknown type name 'DJmotorVal'
-    DJmotorVal valNow;
-    ^
-../User/inc/Init.h(23): error: unknown type name 'DJmotorVal'
-    DJmotorVal valPre;
-    ^
-../User/inc/Init.h(24): error: unknown type name 'DJmotorStatus'
-    DJmotorStatus statusFlag;
-    ^
-../User/inc/Init.h(25): error: unknown type name 'DJmotorLimit'
-    DJmotorLimit limit;
-    ^
-../User/inc/Init.h(26): error: unknown type name 'DJmotorArgum'
-    DJmotorArgum argum;
-    ^
-../User/inc/Init.h(27): error: unknown type name 'DJmotorError'
-    DJmotorError error;
-    ^
-../User/inc/Init.h(28): error: unknown type name 'PIDType'
-    PIDType posPID;
-    ^
-../User/inc/Init.h(29): error: unknown type name 'PIDType'
-    PIDType velPID;
-    ^
-../User/inc/Init.h(1): error: unterminated conditional directive
-#ifndef INIT
- ^
-../User/src/Rx.c(1): warning: In file included from...
-../User/inc\Rx.h(7): error: unknown type name 'FDCAN_RxHeaderTypeDef'
-void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
-                     ^
-../User/inc\Rx.h(7): error: unknown type name 'uint8_t'
-void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
-                                                     ^
-../User/src/Rx.c(3): error: unknown type name 'FDCAN_RxHeaderTypeDef'
-void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
-                     ^
-../User/src/Rx.c(3): error: unknown type name 'uint8_t'
-void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
-                                                     ^
-fatal error: too many errors emitted, stopping now [-ferror-limit=]
-20 errors generated.
-compiling Rx.c...
-"motor_test\motor_test.axf" - 152 Error(s), 4 Warning(s).
+1 warning and 20 errors generated.
+compiling Tx.c...
+"motor_test\motor_test.axf" - 152 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -568,7 +579,7 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
 Target not created.
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

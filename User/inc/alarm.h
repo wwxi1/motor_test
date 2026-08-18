@@ -4,7 +4,7 @@
 
 #include "Init.h"
 
-void DJmotor_Monitor(DJMotorPointer motor);
+static void DJmotor_Monitor(DJMotorPointer motor);
 
 #endif
 

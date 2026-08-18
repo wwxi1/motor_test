@@ -2,9 +2,9 @@
 
 void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
 {
-    if ((Rxheader.IdType != CAN_STANDARD_ID) ||
-        (Rxheader.RxFrameType != CAN_DATA_FRAME) ||
-        (Rxheader.Identifier < 0x201U) || (Rxheader.Identifier > 0x208U))
+    if ((Rxheader.IDE != CAN_ID_STD) ||
+        (Rxheader.RTR !=  CAN_RTR_DATA) ||
+        (Rxheader. StdId < 0x201U) || (Rxheader.StdId  > 0x208U))
     {
         return;
     }

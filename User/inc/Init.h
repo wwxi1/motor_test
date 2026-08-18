@@ -5,35 +5,6 @@
 
 void DJmotor_Init(void);
 
-
-
-typedef struct
-{
-    uint8_t ID;
-    volatile bool Begin;              // true 运行 MODE;false 失能
-    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
-    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
-
-    DJmotorParam param;
-    DJmotorVal valSet;
-    DJmotorVal valNow;
-    DJmotorVal valPre;
-    DJmotorStatus statusFlag;
-    DJmotorLimit limit;
-    DJmotorArgum argum;
-    DJmotorError error;
-    PIDType posPID;
-    PIDType velPID;
-} DJMotor, *DJMotorPointer;
-
-#if USE_DJ
-extern DJMotor DJmotor[USE_DJNUM];
-
-void DJmotor_Init(void);
-void DJmotor_Func(void);
-void DJmotor_Receive(FDCAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
-void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload);
-
 typedef enum
 {
     DJ_Disable = 0,  /*关: transmit 0 current */
@@ -79,4 +50,33 @@ typedef struct
     bool IsLooseStuck;
 } DJmotorLimit;
 
+typedef struct
+{
+    uint8_t ID;
+    volatile bool Begin;              // true 运行 MODE;false 失能
+    volatile DJmotor_mode_t MODE_Set; // DJ_Disable 即失能(发0电流)
+    volatile DJmotor_mode_t MODE_Cur; // 实际运行模式,任务层可读
+
+    DJmotorParam param;
+    DJmotorVal valSet;
+    DJmotorVal valNow;
+    DJmotorVal valPre;
+    DJmotorStatus statusFlag;
+    DJmotorLimit limit;
+    DJmotorArgum argum;
+    DJmotorError error;
+    PIDType posPID;
+    PIDType velPID;
+} DJMotor, *DJMotorPointer;
+
+
+#if USE_DJ
+extern DJMotor DJmotor[USE_DJNUM];
+
+void DJmotor_Init(void);
+void DJmotor_Func(void);
+void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data);
+void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload);
+
+ 
 #endif

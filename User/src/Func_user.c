@@ -1,5 +1,24 @@
 #include "Func_user.h"
 
+
+
+static void DJmotor_SwitchMode(DJMotorPointer motor)
+{
+    if (motor->MODE_Set != motor->MODE_Cur)
+    {
+        motor->MODE_Cur = motor->MODE_Set;
+        motor->valSet.current_raw = 0;
+        motor->valSet.speed_rpm = 0;
+        motor->valSet.angle_deg = motor->valNow.angle_deg;
+        /*清误差历史与位置环累加的目标速度(velPID.SetVal),避免残留值冲击新模式 */
+        PID_Reset(&motor->posPID);
+        PID_Reset(&motor->velPID);
+        motor->statusFlag.ZeroFlag = false;
+        motor->statusFlag.Overtimeflag = false;
+        motor->statusFlag.StuckFlag = false;
+    }
+}
+
 void DJmotor_Func(void)
 {
     for (uint32_t i = 0; i < USE_DJNUM; i++)
@@ -43,19 +62,4 @@ void DJmotor_Func(void)
     }
 }
 
-static void DJmotor_SwitchMode(DJMotorPointer motor)
-{
-    if (motor->MODE_Set != motor->MODE_Cur)
-    {
-        motor->MODE_Cur = motor->MODE_Set;
-        motor->valSet.current_raw = 0;
-        motor->valSet.speed_rpm = 0;
-        motor->valSet.angle_deg = motor->valNow.angle_deg;
-        /*清误差历史与位置环累加的目标速度(velPID.SetVal),避免残留值冲击新模式 */
-        PID_Reset(&motor->posPID);
-        PID_Reset(&motor->velPID);
-        motor->statusFlag.ZeroFlag = false;
-        motor->statusFlag.Overtimeflag = false;
-        motor->statusFlag.StuckFlag = false;
-    }
-}
+ 
