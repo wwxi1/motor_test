@@ -1,4 +1,20 @@
 #include "pid.h"
+#include "Init.h"
+
+void PID_Init(PIDType *pid, float KP, float KI, float KD, uint8_t mode)
+{
+    pid->KP = KP;  pid->KI = KI;  pid->KD = KD;
+    pid->mode = mode;
+    PID_Reset(pid);
+}
+
+void PID_Reset(PIDType *pid)
+{
+    pid->err[0] = pid->err[1] = pid->err[2] = 0.0f;
+    pid->SumError = 0.0f;
+    pid->output = 0.0f;
+}
+
 
 float PID_Caculate(PIDType *pid)
 {
@@ -31,3 +47,4 @@ float PID_Caculate(PIDType *pid)
     }
     return pid->output;
 }
+

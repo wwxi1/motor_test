@@ -17,9 +17,12 @@
 #define PIDINC 1
 
 #define ABS(x) ((x) > 0 ? (x) : -(x))
-#define CLAMP(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
-
-void DJmotor_Init(void);
+#define Clamp(x, min, max) ((x) < (min) ? (min) : ((x) > (max) ? (max) : (x)))
+#define ClampPeak(val, peak)   Clamp((val), -(peak), (peak))
+#define GetSign(x) ((x) > 0 ? 1 : ((x) < 0 ? -1 : 0))
+#define ChangeDataByte(a, b)   do { \
+    uint8_t _t = *(a);  *(a) = *(b);  *(b) = _t; \
+} while(0)
 
 
 typedef enum
@@ -110,6 +113,7 @@ typedef struct
 } DJMotor, *DJMotorPointer;
 
 
+
 #if USE_DJ
 extern DJMotor DJmotor[USE_DJNUM];
 
@@ -120,4 +124,13 @@ void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload);
 
  
 #endif
+
+
+void DJmotor_Init(void);
+void EncodeS16Data(const int16_t *src, uint8_t *dst);
+void DJmotor_SetZero(DJMotorPointer motor);
+
+
+
+
 #endif

@@ -1,9 +1,18 @@
 #include "Tx.h"
+#include "can.h"
+#include "can.h"   
+
+CAN_HandleTypeDef* DJmotor_GetCanHandle(void)
+{
+    return &hcan1;   
+}
+
 
 void DJmotor_CurrentTransmit(DJMotorPointer motor)
 {
     static uint8_t tx_data[8] = {0};
     CAN_TxHeaderTypeDef tx_header = {0};
+    uint32_t tx_mailbox = 0;  
     uint8_t tag = 0;
 
     /* 电流限幅由各模式函数负责,此处只打包发送 */
@@ -22,11 +31,9 @@ void DJmotor_CurrentTransmit(DJMotorPointer motor)
         tx_header.StdId = 0x1FFU;
         tag = (uint8_t)((motor->ID - 5U) * 2U);
     }
+
     EncodeS16Data(&motor->valSet.current_raw, &tx_data[tag]);
     ChangeDataByte(&tx_data[tag], &tx_data[tag + 1U]);
-
-    if (motor->ID == 4U || motor->ID == 8U)
-    {
-        HAL_CAN_AddTxMessage (DJmotor_GetCanHandle(),  &tx_header, tx_data, &tx_mailbox);
-    }
+    HAL_CAN_AddTxMessage (DJmotor_GetCanHandle(),  &tx_header, tx_data, &tx_mailbox);
+    
 }

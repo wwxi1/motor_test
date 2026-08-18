@@ -9,3 +9,5 @@ void DJmotor_Func(void);
 static void DJmotor_SwitchMode(DJMotorPointer motor);
 
 #endif
+
+

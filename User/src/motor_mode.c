@@ -22,7 +22,7 @@ void DJmotor_PositionMode(DJMotorPointer motor)
 {
     motor->valSet.PulseTotal = (int32_t)(motor->valSet.angle_deg * motor->param.Gear_ratio *
                                          motor->param.Reduction_ratio * (float)motor->param.PulsePerRound / 360.0f);
-    motor->F.SetVal = (float)motor->valSet.PulseTotal;
+    motor->posPID.SetVal = (float)motor->valSet.PulseTotal;
     if (motor->limit.PosAngleLimitFlag)
     {
         const int32_t max_pulse = (int32_t)(motor->limit.MaxAngle_deg *

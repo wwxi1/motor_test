@@ -1,11 +1,21 @@
 
 #include "Init.h"
 
- 
-
-
 DJMotor DJmotor[USE_DJNUM];
 
+void EncodeS16Data(const int16_t *src, uint8_t *dst)
+{
+    int16_t v = *src;                        
+    dst[0] = (uint8_t)( v        & 0xFFu);   
+    dst[1] = (uint8_t)((v >> 8)  & 0xFFu);   
+}
+
+void DJmotor_SetZero(DJMotorPointer motor)
+{
+    motor->valNow.PulseTotal = 0;
+    motor->valNow.angle_deg  = 0.0f;
+    motor->valPre = motor->valNow;          
+}
 
 void DJmotor_Init(void)                     // 参数初始化
 {
@@ -89,3 +99,5 @@ void DJmotor_Init(void)                     // 参数初始化
         PID_Init(&DJmotor[i].velPID, 5.5f, 0.3f, 0.01f, PIDINC);
     }
 }
+
+

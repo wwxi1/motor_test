@@ -55,6 +55,32 @@ void MX_CAN1_Init(void)
   }
   /* USER CODE BEGIN CAN1_Init 2 */
 
+  CAN_FilterTypeDef can_filter = {0};
+  can_filter.FilterIdHigh       = 0x0000;
+  can_filter.FilterIdLow        = 0x0000;
+  can_filter.FilterMaskIdHigh    = 0x0000;
+  can_filter.FilterMaskIdLow     = 0x0000;
+  can_filter.FilterScale         = CAN_FILTERSCALE_32BIT;
+  can_filter.FilterMode          = CAN_FILTERMODE_IDMASK;
+  can_filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;   
+  can_filter.FilterBank          = 0;
+  can_filter.FilterActivation    = ENABLE;
+  if (HAL_CAN_ConfigFilter(&hcan1, &can_filter) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+  if (HAL_CAN_Start(&hcan1) != HAL_OK)                 
+  {
+    Error_Handler();
+  }
+
+  /* 使能 FIFO0 接收中断，数据帧进来后触发 HAL_CAN_RxFifo0MsgPendingCallback */
+  if (HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
   /* USER CODE END CAN1_Init 2 */
 
 }

@@ -1,5 +1,5 @@
 #include "Rx.h"
-
+#include "can.h"
 void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
 {
     if ((Rxheader.IDE != CAN_ID_STD) ||
@@ -37,3 +37,19 @@ void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
     motor->error.lastRxTime = 0;
     DJmotor_AngleCalculate(motor);
 }
+
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    uint8_t rx_data[8];
+    CAN_RxHeaderTypeDef rx_header;
+
+    if (hcan->Instance == CAN1)
+    {
+        if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &rx_header, rx_data) == HAL_OK)
+        {
+            DJmotor_Receive(rx_header, rx_data);
+        }
+    }
+}
+
+

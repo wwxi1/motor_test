@@ -29,4 +29,5 @@ motor_test/rx.o: ..\User\src\Rx.c ..\User\inc\Rx.h ..\User\inc\Init.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
-  ..\User\inc\pid.h D:\keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h
+  ..\User\inc\pid.h D:\keil5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  ..\Core\Inc\can.h
