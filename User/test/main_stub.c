@@ -1,19 +1,33 @@
+/**
+ * @file main_stub.c
+ * @brief 测试环境的 main.c stub
+ */
 
-#include "Init.h"
+#include "Init_test.h"
 
+/* 定义全局电机数组 - 与原始 Init.c 一致 */
 DJMotor DJmotor[USE_DJNUM];
 
-void dji_enable(uint8_t x)
+/* 占位函数实现 */
+void DJmotor_Func(void)
 {
-    DJmotor[x].Begin = true;
-    DJmotor[x].MODE_Set = DJ_RPM;
+    /* 空实现 */
 }
-void start_test(uint8_t x)
-{
 
-   
-    DJmotor[x].valSet.speed_rpm = 5;
+void DJmotor_Receive(CAN_RxHeaderTypeDef Rxheader, uint8_t *Rx_data)
+{
+    (void)Rxheader;
+    (void)Rx_data;
+    /* 空实现 */
 }
+
+void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload)
+{
+    (void)motor;
+    (void)pid_reload;
+    /* 空实现 */
+}
+
 void EncodeS16Data(const int16_t *src, uint8_t *dst)
 {
     int16_t v = *src;
@@ -21,6 +35,7 @@ void EncodeS16Data(const int16_t *src, uint8_t *dst)
     dst[1] = (uint8_t)((v >> 8) & 0xFFu);
 }
 
+/* 被测函数实现 - 从 Init.c 复制 */
 void DJmotor_SetZero(DJMotorPointer motor)
 {
     motor->valNow.PulseTotal = 0;
@@ -28,7 +43,7 @@ void DJmotor_SetZero(DJMotorPointer motor)
     motor->valPre = motor->valNow;
 }
 
-void DJmotor_Init(void) // 参数初始化
+void DJmotor_Init(void)
 {
     DJmotorParam dj2006_param;
     DJmotorParam dj3508_param;
@@ -51,13 +66,11 @@ void DJmotor_Init(void) // 参数初始化
 
     limit.CurrentLimitFlag = true;
     limit.IsLooseStuck = false;
-
     limit.MaxAngle_deg = 270.0f;
     limit.MinAngle_deg = -270.0f;
     limit.PosAngleLimitFlag = false;
     limit.PosRPMFlag = true;
     limit.PosRPMLimit = 8000;
-
     limit.RPMLimitFlag = false;
     limit.SpeedRPMLimit = 10000;
     limit.ZeroCurrentLimit_raw = 3000;
@@ -79,7 +92,7 @@ void DJmotor_Init(void) // 参数初始化
     for (uint32_t i = 0; i < USE_DJNUM; i++)
     {
         DJmotor[i].Begin = false;
-        DJmotor[i].MODE_Set = DJ_Disable; // 上电失能，发0电流
+        DJmotor[i].MODE_Set = DJ_Disable;
         DJmotor[i].statusFlag = statusFlag;
         DJmotor[i].limit = limit;
         DJmotor[i].argum = argum;

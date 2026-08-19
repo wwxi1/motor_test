@@ -10,7 +10,7 @@
 #define USE_DJNUM 1
 #define M2006_NUM 1
 #define M3508_NUM 0
-#define M2006_RATIO (36.0f / 19.0f) 
+#define M2006_RATIO (36.0f / 1.0f) 
 #define M3508_RATIO  (3591.0f / 187.0f)
 #define Zero_Distance  5 
 #define PIDPOS 0
@@ -129,7 +129,7 @@ void DJmotor_PID_Reload(DJMotorPointer motor, DJmotorPID pid_reload);
 void DJmotor_Init(void);
 void EncodeS16Data(const int16_t *src, uint8_t *dst);
 void DJmotor_SetZero(DJMotorPointer motor);
-
+void start_test(uint8_t x);
 
 
 

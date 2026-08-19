@@ -93,7 +93,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
  DJmotor_Init();   
- 
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,7 +101,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+  
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

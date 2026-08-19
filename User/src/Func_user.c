@@ -19,6 +19,14 @@ static void DJmotor_SwitchMode(DJMotorPointer motor)
     }
 }
 
+/**
+ * @brief DJ电机主控制函数
+ *
+ * 遍历所有DJ电机，根据当前模式执行相应的控制逻辑。
+ * 已初始化电机根据MODE_Cur进入对应模式（禁用/速度/位置/归零/电流）；
+ * 未初始化电机强制输出0电流以防止残留累加电流持续输出。
+ * 最后通过CAN发送电流指令到电机。
+ */
 void DJmotor_Func(void)
 {
     for (uint32_t i = 0; i < USE_DJNUM; i++)

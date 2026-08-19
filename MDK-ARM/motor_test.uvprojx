@@ -546,14 +546,14 @@
               <FilePath>..\User\src\Init.c</FilePath>
             </File>
             <File>
-              <FileName>motor_mode.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\src\motor_mode.c</FilePath>
-            </File>
-            <File>
               <FileName>position_calculation.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\src\position_calculation.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_mode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\src\motor_mode.c</FilePath>
             </File>
             <File>
               <FileName>Rx.c</FileName>

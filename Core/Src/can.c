@@ -56,10 +56,10 @@ void MX_CAN1_Init(void)
   /* USER CODE BEGIN CAN1_Init 2 */
 
   CAN_FilterTypeDef can_filter = {0};
-  can_filter.FilterIdHigh       = 0x0000;
-  can_filter.FilterIdLow        = 0x0000;
-  can_filter.FilterMaskIdHigh    = 0x0000;
-  can_filter.FilterMaskIdLow     = 0x0000;
+  can_filter.FilterIdHigh       = (0x0200<<5);
+  can_filter.FilterIdLow        = (0x0001<<5);
+  can_filter.FilterMaskIdHigh    = (0x07F0<<5);
+  can_filter.FilterMaskIdLow     = (0x0FFF<<5);
   can_filter.FilterScale         = CAN_FILTERSCALE_32BIT;
   can_filter.FilterMode          = CAN_FILTERMODE_IDMASK;
   can_filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;   
