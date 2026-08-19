@@ -8,7 +8,7 @@
 
 #define USE_DJ 1
 #define USE_DJNUM 1
-#define M2006_NUM 1
+#define M2006_NUM 4
 #define M3508_NUM 0
 #define M2006_RATIO (36.0f / 1.0f) 
 #define M3508_RATIO  (3591.0f / 187.0f)

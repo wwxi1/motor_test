@@ -52,7 +52,7 @@ void DJmotor_PositionMode(DJMotorPointer motor)
 void DJmotor_ZeroMode(DJMotorPointer motor)
 {
     motor->velPID.SetVal = (float)motor->limit.ZeroRPMLimit;
-    motor->velPID.CurVal = (float)motor->valNow.speed_rpm;
+    motor->velPID.CurVal = (float)motor->valNow.speed_rpm * motor->param.Gear_ratio * motor->param.Reduction_ratio;  //此处修改过
     motor->valSet.current_raw += PID_Caculate(&motor->velPID);
     motor->valSet.current_raw = (int16_t)ClampPeak(motor->valSet.current_raw, motor->limit.ZeroCurrentLimit_raw);
 
@@ -72,3 +72,5 @@ void DJmotor_ZeroMode(DJMotorPointer motor)
         }
     }
 }
+
+

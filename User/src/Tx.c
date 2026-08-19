@@ -34,6 +34,7 @@ void DJmotor_CurrentTransmit(DJMotorPointer motor)
 
     EncodeS16Data(&motor->valSet.current_raw, &tx_data[tag]);
     ChangeDataByte(&tx_data[tag], &tx_data[tag + 1U]);
-    HAL_CAN_AddTxMessage (DJmotor_GetCanHandle(),  &tx_header, tx_data, &tx_mailbox);
-    
+    if(motor->ID == 4 || motor->ID == 8){
+        HAL_CAN_AddTxMessage (DJmotor_GetCanHandle(),  &tx_header, tx_data, &tx_mailbox);
+    }
 }
