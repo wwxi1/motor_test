@@ -93,7 +93,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   DJmotor_Init();   
-  HAL_GPIO_WritePin(BUZZER_GPIO_Port,BUZZER_Pin,GPIO_PIN_SET);
+  // HAL_GPIO_WritePin(BUZZER_GPIO_Port,BUZZER_Pin,GPIO_PIN_SET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
